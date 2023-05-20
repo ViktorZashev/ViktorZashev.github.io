@@ -1,0 +1,392 @@
+/* new cells*/
+.cell {
+    width: 64px;
+    height: 64px;
+    position: relative;
+ 
+}
+
+
+    .cell > div {
+        background: url('assets/sprite.png');
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        content: "";
+        display: block;
+    }
+
+    /*Flag*/
+    .cell .flag {
+        z-index: 10;
+        visibility: hidden;
+    }
+
+    .cell.flagged .flag {
+        visibility: visible;
+        background-position-y: -400px;
+        background-position-x: -100px;
+    }
+
+    .cell.fade.flagged .flag {
+        display: none;
+    }
+
+    /*Tile*/
+    .cell .tile {
+        z-index: 9;
+    }
+
+    .cell.fade .tile {
+        opacity: 0.5;
+    }
+
+    .cell.revealed .tile {
+        visibility: hidden;
+    }
+
+    .cell .tile.animated {
+        animation: CellAnimation 10s infinite;
+        animation-timing-function: steps(1, end);
+    }
+
+    /*Chest*/
+    .cell .chest {
+        z-index: 8;
+        background-position-x: -500px;
+        background-position-y: -400px;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 2s linear, visibility 2s linear;
+    }
+
+    .cell.unopened .chest {
+        visibility: visible;
+        opacity: 1;
+    }
+    .hide {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 4s linear, visibility 4s linear;
+    }
+
+    /*Content*/
+    .cell .content {
+        z-index: 7;
+        background-position-x: 0;
+        background-position-y: -100px;
+    }
+
+        .cell .content.blackmine {
+            background-position-x: -200px;
+            background-position-y: -400px;
+        }
+         .cell .content.blackmine #soundtrack {
+            background-position-x: -200px;
+            background-position-y: -400px;
+        }
+
+        .cell .content.health {
+            background-position-x: -700px;
+            background-position-y: -400px;
+        }
+
+        .cell .content.number1 {
+            background-position-x: 0;
+            background-position-y: -200px;
+        }
+
+        .cell .content.number1sides {
+            background-position-x: 0px;
+            background-position-y: -300px;
+        }
+
+        .cell .content.number2 {
+            background-position-x: -100px;
+            background-position-y: -200px;
+        }
+
+        .cell .content.number2sides {
+            background-position-x: -100px;
+            background-position-y: -300px;
+        }
+
+        .cell .content.number3 {
+            background-position-x: -200px;
+            background-position-y: -200px;
+        }
+
+        .cell .content.number3sides {
+            background-position-x: -200px;
+            background-position-y: -300px;
+        }
+
+        .cell .content.number4 {
+            background-position-x: -300px;
+            background-position-y: -200px;
+        }
+
+        .cell .content.number4sides {
+            background-position-x: -300px;
+            background-position-y: -300px;
+        }
+
+        .cell .content.number5 {
+            background-position-x: -400px;
+            background-position-y: -200px;
+        }
+
+        .cell .content.number6 {
+            background-position-x: -500px;
+            background-position-y: -200px;
+        }
+
+        .cell .content.number7 {
+            background-position-x: -600px;
+            background-position-y: -200px;
+        }
+
+        .cell .content.number8 {
+            background-position-x: -700px;
+            background-position-y: -200px;
+        }
+
+        .cell .content.points {
+            background-position-x: 0px;
+            background-position-y: -400px;
+        }
+
+        .cell .content.radar {
+            background-position-x: -600px;
+            background-position-y: -400px;
+        }
+
+        .cell .content.redmine {
+            background-position-x: -300px;
+            background-position-y: -400px;
+        }
+
+        .cell .content.time {
+            background-position-x: -400px;
+            background-position-y: -400px;
+        }
+
+
+    /*Background*/
+    .cell .background {
+        z-index: 6;
+        background-position-x: 0;
+        background-position-y: -100px;
+        opacity:1;
+    }
+
+
+
+
+
+
+
+    /*.cell.revealed::before {
+    background-position-x: 0px;
+    background-position-y: -400px;
+}
+.cell.revealed.chest::before {
+    background-position-x: -700px;
+    background-position-y: 0px;
+}
+
+.cell.revealed.chest.radar::before {
+    background-position-x: -300px;
+    background-position-y: -400px;
+}
+
+.cell.revealed.chest.health::before {
+    background-position-x: -400px;
+    background-position-y: -400px;
+}
+
+.cell.revealed.chest.time::before {
+    background-position-x: -200px;
+    background-position-y: -400px;
+}
+
+.cell.revealed.chest.points::before {
+    background-position-x: -100px;
+    background-position-y: -400px;
+}
+
+.cell.revealed.number1::before {
+    background-position-y: -200px;
+    background-position-x: 0;
+}
+
+.cell.revealed.number2::before {
+    background-position-y: -200px;
+    background-position-x: -100px;
+}
+
+.cell.revealed.number3::before {
+    background-position-y: -200px;
+    background-position-x: -200px;
+}
+
+.cell.revealed.number4::before {
+    background-position-y: -200px;
+    background-position-x: -300px;
+}
+
+.cell.revealed.number5::before {
+    background-position-y: -200px;
+    background-position-x: -400px;
+}
+
+.cell.revealed.number6::before {
+    background-position-y: -200px;
+    background-position-x: -500px;
+}
+
+.cell.revealed.number7::before {
+    background-position-y: -200px;
+    background-position-x: -600px;
+}
+
+.cell.revealed.number8::before {
+    background-position-y: -200px;
+    background-position-x: -700px;
+}
+
+.cell.revealed.number1sides::before {
+    background-position-y: -300px;
+    background-position-x: 0;
+}
+
+.cell.revealed.number2sides::before {
+    background-position-y: -300px;
+    background-position-x: -100px;
+}
+
+.cell.revealed.number3sides::before {
+    background-position-y: -300px;
+    background-position-x: -200px;
+}
+
+.cell.revealed.number4sides::before {
+    background-position-y: -300px;
+    background-position-x: -300px;
+}
+
+.cell.revealed.number5sides::before {
+    background-position-y: -300px;
+    background-position-x: -400px;
+}
+
+.cell.revealed.number6sides::before {
+    background-position-y: -300px;
+    background-position-x: -500px;
+}
+
+.cell.revealed.number7sides::before {
+    background-position-y: -300px;
+    background-position-x: -600px;
+}
+
+.cell.revealed.number8sides::before {
+    background-position-y: -300px;
+    background-position-x: -700px;
+}
+
+.cell.flag::before {
+    background-position-y: 0px;
+    background-position-x: -500px;
+}
+
+.cell.revealed.blackmine::before {
+    background-position-x: -600px;
+    background-position-y: 0px;
+}
+
+.cell.revealed.redmine::before {
+    background-position-x: -400px;
+    background-position-y: 0px;
+}*/
+    /*   radar reveal
+    .cell.transparent::before {
+    background-position-x: -400px;
+    background-position-y: -700px;
+}
+
+.cell.transparent.chest::before {
+    background-position-x: -700px;
+    background-position-y: -700px;
+  
+}
+.cell.transparent.number1::before {
+    background-position-x: 0;
+    background-position-y: -600px;
+
+}
+.cell.transparent.number2::before {
+    background-position-x: -100px;
+    background-position-y: -600px;
+}
+.cell.transparent.number3::before {
+    background-position-x: -200px;
+    background-position-y: -600px;
+}
+.cell.transparent.number4::before {
+    background-position-x: -300px;
+    background-position-y: -600px;
+}
+.cell.transparent.number5::before {
+    background-position-x: -400px;
+    background-position-y: -600px;
+}
+.cell.transparent.number6::before {
+    background-position-x: -500px;
+    background-position-y: -600px;
+}
+.cell.transparent.number7::before {
+    background-position-x: -600px;
+    background-position-y: -600px;
+}
+.cell.transparent.number8::before {
+    background-position-x: -700px;
+    background-position-y: -600px;
+}
+.cell.transparent.number1sides::before {
+    background-position-x: 0;
+    background-position-y: -700px;
+}
+.cell.transparent.number2sides::before {
+    background-position-x: -100px;
+    background-position-y: -700px;
+}
+.cell.transparent.number3sides::before {
+    background-position-x: -200px;
+    background-position-y: -700px;
+}
+.cell.transparent.number4sides::before {
+    background-position-x: -300px;
+    background-position-y: -700px;
+}
+.cell.transparent.blackmine::before {
+    background-position-x: -500px;
+    background-position-y: -700px;
+}
+
+.cell.transparent.redmine::before {
+    background-position-x: -600px;
+    background-position-y: -700px;
+}
+.fade::before {
+    animation: fadeAnimation 3s normal;
+    animation-timing-function: steps(50);
+    animation-fill-mode: forwards;
+ 
+}
+*/
+
+
